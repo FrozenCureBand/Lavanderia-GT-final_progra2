@@ -1,0 +1,34 @@
+# ============================================================
+# .gitignore — Pfinal_labanderia (C# .NET Framework, Windows Forms)
+# Excluye archivos que Visual Studio genera o que se pueden restaurar.
+# ============================================================
+
+# Carpeta oculta de Visual Studio (caché y configuración local)
+.vs/
+
+# Resultados de compilación (se generan al compilar)
+[Bb]in/
+[Oo]bj/
+
+# Configuración personal de cada usuario
+*.user
+*.suo
+*.userprefs
+*.rsuser
+
+# Paquetes NuGet: se restauran desde packages.config
+packages/
+
+# Temporales y registros
+*.tmp
+*.log
+
+# Copias de seguridad de SQL Server (archivos grandes)
+*.bak
+
+# Configuración del editor VS Code de cada usuario
+.vscode/
+
+# Cadena de conexión REAL con la contraseña de SQL Server: nunca se sube.
+# En el repositorio va la plantilla Conexion.config.ejemplo (sin contraseña).
+Conexion.config
