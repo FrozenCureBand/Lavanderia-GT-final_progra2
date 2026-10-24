@@ -63,7 +63,7 @@ Requisitos: Git, Visual Studio con soporte para .NET Framework 4.8 y archivos `.
 
 1. Clonar (en CMD):
    ```
-   git clone https://github.com/crisprado/Lavanderia-GT-final_progra2.git
+   git clone https://github.com/cpradoc2/Lavanderia-GT-final_progra2.git
    ```
 2. Crear el archivo de conexión. **No viene en el repositorio** porque lleva la contraseña de SQL Server:
    ```
