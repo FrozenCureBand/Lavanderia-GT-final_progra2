@@ -322,10 +322,37 @@ código solo las líneas de estilo de la paginación.
   - la prueba del menú dio "TODO CORRECTO" (abre Inicio, cambia a Clientes y vuelve a Inicio);
   - capturas de los 8 formularios CRUD (Consulta y Gestionar), del menú con Inicio y del login: títulos y
     "Página 1 de 1" completos, y "Limpiar"/"Imprimir" ya no se ven cortados.
-- **Prueba del estudiante en Visual Studio: PENDIENTE.**
+- **Prueba del estudiante en Visual Studio: PENDIENTE.** (El estudiante revisó el resultado y dijo "me gusta, déjalo así".)
+
+## 2026-10-24 · Documento 06: repositorio público en GitHub (pedido del estudiante)
+
+- Repositorio: https://github.com/cpradoc2/Lavanderia-GT-final_progra2. GitHub no admite espacios: el nombre pedido
+  "Lavanderia GT final_progra2" quedó con guiones. Comprobado con la API de GitHub: `"visibility": "public"`, rama `main`.
+- Commits a nombre de `cris prado <cpradoc2@miumg.edu.gt>` (identidad global de Git de esta PC, elegida por el
+  estudiante). Cuenta de GitHub con sesión iniciada: `cpradoc2`.
+- Contraseña fuera del repositorio:
+  - `App.config` usa `<connectionStrings configSource="Conexion.config" />`.
+  - `Conexion.config` tiene la cadena real, está en `.gitignore` y el `.csproj` lo copia junto al `.exe`.
+  - `Conexion.config.ejemplo` es la plantilla sin contraseña y sí se sube.
+  - Los mensajes de error de `Datos\Conexion.cs` ahora nombran `Conexion.config`.
+- Comprobado:
+  - compila (código de salida 0);
+  - la prueba de conexión dio 6 de 6 casos esperados, incluido "falta Conexion.config", que muestra un mensaje claro;
+  - `git grep --cached` no encontró la contraseña real; `git check-ignore` confirma que `Conexion.config` se ignora;
+  - `Conexion.config` no existe en GitHub (respuesta 404);
+  - un clon nuevo en una ruta corta restauró NuGet y compiló. Sin `Conexion.config` el error es MSB3030 (no encuentra
+    el archivo); después de copiar la plantilla compila con código 0.
+- En una ruta muy larga, la restauración de NuGet falla por el límite de 260 caracteres de Windows. El README
+  recomienda clonar en una carpeta corta.
+- GitHub CLI 2.103.2 está en `%LOCALAPPDATA%\Programs\GitHubCLI\bin\gh.exe` (zip oficial, SHA-256 comprobado).
+  `winget` no está instalado en esta PC.
+- El `push` usó la sesión de GitHub CLI solo para ese comando (`git -c credential.helper=...`), sin cambiar la
+  configuración global de Git.
+- Agregar al compañero como colaborador para que pueda hacer `push` — PENDIENTE.
 
 ## Decisiones pendientes
 
 - ¿Retirar la prueba de `Program.cs` o dejar solo el aviso cuando falla? — PENDIENTE.
 - Convertir a SHA-256 las 5 claves actuales en texto plano (documento 07, Login) — PENDIENTE.
-- Retirar la contraseña de `App.config` antes de Git — PENDIENTE (documento 06).
+- ~~Retirar la contraseña de `App.config` antes de Git~~ — RESUELTO el 2026-10-24 (`Conexion.config`).
+- Cerrar el documento 01 y decidir el estado del 06 — PENDIENTE de autorización del estudiante.

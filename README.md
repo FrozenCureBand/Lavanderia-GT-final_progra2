@@ -61,8 +61,10 @@ Pfinal_labanderia\
 Requisitos: Git, Visual Studio con soporte para .NET Framework 4.8 y archivos `.slnx`, y SQL Server con la base
 `BD_LavanderiaGT`.
 
-1. Clonar (en CMD):
+1. Clonar (en CMD) en una carpeta de ruta corta, por ejemplo `C:\Proyectos`. Windows limita las rutas a
+   260 caracteres y algunos paquetes NuGet tienen nombres largos:
    ```
+   cd /d C:\Proyectos
    git clone https://github.com/cpradoc2/Lavanderia-GT-final_progra2.git
    ```
 2. Crear el archivo de conexión. **No viene en el repositorio** porque lleva la contraseña de SQL Server:
@@ -76,7 +78,9 @@ Requisitos: Git, Visual Studio con soporte para .NET Framework 4.8 y archivos `.
 3. Abrir `src\Pfinal_labanderia\Pfinal_labanderia.slnx` con Visual Studio y compilar. Visual Studio descarga
    los paquetes NuGet la primera vez.
 
-Si al iniciar el programa aparece "Problema con la configuración de la conexión", falta `Conexion.config` (paso 2).
+Si al compilar aparece el error **MSB3030** "No se pudo copiar el archivo ...\Conexion.config porque no se
+encontró", falta hacer el paso 2. Si al iniciar el programa aparece "Problema con la configuración de la
+conexión", revisa el contenido de `Conexion.config`.
 
 ## Trabajo en equipo con Git
 
