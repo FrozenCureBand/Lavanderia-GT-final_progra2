@@ -4,8 +4,8 @@ Proyecto final del curso **Programación II 2026**.
 Aplicación de escritorio para gestionar una lavandería: clientes, recepciones, tarifas, usuarios,
 entregas, procesos, tipos de prenda y servicios, con una pantalla de Inicio (dashboard).
 
-> Estado actual: los 8 módulos consultan, buscan, agregan, editan y eliminan en SQL Server.
-> Documento 06 (Git/GitHub) en curso. Login y roles (documento 07): PENDIENTE.
+> Estado de entrega, 30 de octubre de 2026: Release compilado sin errores según el usuario. El usuario también confirmó que la copia funcionó en otro equipo con conexión, Login, Panel, Dashboard y CRUD.
+> Las evidencias visuales y el estado de cierre de documentos anteriores siguen pendientes. Ver [ESTADO_DOCUMENTOS.md](ESTADO_DOCUMENTOS.md).
 > Ver [ESTADO_DOCUMENTOS.md](ESTADO_DOCUMENTOS.md).
 
 ## Tecnologías (comprobadas en los archivos `.csproj`)
@@ -111,3 +111,23 @@ Para poder hacer `git push`, el dueño del repositorio debe agregar al compañer
 - [MEMORY.md](MEMORY.md) — hechos comprobados
 - [docs/COMANDOS_RAPIDOS.md](docs/COMANDOS_RAPIDOS.md) — comandos CMD
 - [database/CONEXION_DATABASE.md](database/CONEXION_DATABASE.md) — estado de la conexión
+
+## Actualizacion de publicacion y entrega, 30 de octubre de 2026
+
+Requisito de ejecucion: Windows con .NET Framework 4.8 y acceso de red al SQL Server configurado.
+
+Ejecutable Release: src\Pfinal_labanderia\Pfinal_labanderia\bin\Release\Pfinal_labanderia.exe.
+
+Archivos necesarios junto al ejecutable: Pfinal_labanderia.exe.config, Conexion.config, Datos.dll, Entidad.dll, Negocio.dll y FontAwesome.Sharp.dll.
+
+Carpeta de entrega generada: C:\Entrega_LavanderiaGT\Release. Conserva junta la carpeta completa.
+
+Conexion.config debe estar junto al ejecutable y contiene la cadena privada de conexion. En ese archivo se configuran servidor y puerto en Data Source, base en Initial Catalog, y usuario SQL en User ID. La contraseña se mantiene solo en ese archivo local; no se sube a GitHub. App.config carga Conexion.config.
+
+El usuario confirmo que el ejecutable se conecto a SQL Server desde el equipo de destino y que funcionaron las pruebas de Login, Panel, Dashboard y CRUD.
+
+Respaldo informado y localizado en el equipo: C:\Respaldos\BD_LavanderiaGT.bak. La presencia del archivo se comprobo por listado; no se ejecuto el script SQL ni una restauracion de prueba.
+
+Evidencias visuales de Login, Panel, Dashboard y CRUD: pendientes de guardar en docs, carpeta plana.
+
+Responsables: asignacion nominal pendiente de confirmacion por el equipo.

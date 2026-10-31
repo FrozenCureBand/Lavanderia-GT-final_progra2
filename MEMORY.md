@@ -462,3 +462,48 @@ código solo las líneas de estilo de la paginación.
 
 - Instrucción recibida: marcar Documento 09 como COMPLETADO solo cuando los tres integrantes confirmen sus pruebas; no iniciar Documento 10 ni publicar el sistema antes de autorización expresa del grupo.
 - En esta conversación no se han recibido las tres confirmaciones. Documento 09 permanece sin marcar como COMPLETADO. No se cambió ESTADO_DOCUMENTOS.md ni se inició el Documento 10 o publicación.
+## 2026-10-30 · Revisión preparatoria de entrega final (skill local 11)
+
+- Inspeccionados README, AGENTS, MEMORY, ESTADO_DOCUMENTOS, skills/11_Publicacion.md, database/CONEXION_DATABASE.md, solución, proyectos, configuración y scripts. La numeración no coincide: ESTADO_DOCUMENTOS tiene Documento 10 como revisión y Documento 11 como publicación; en esta solicitud el usuario llamó Documento 10 a Publicación.
+- Los cuatro proyectos targetean .NET Framework v4.8. Presentación es OutputType WinExe y AnyCPU; Program.Main comprueba conexión por Negocio y luego inicia logoing. El archivo Pfinal_labanderia.slnx enumera cuatro proyectos y no declara proyecto de inicio.
+- Referencias en el csproj de Presentación: Datos, Entidad y Negocio; Negocio referencia Datos y Entidad; Datos referencia Entidad.
+- App.config carga connectionStrings desde Conexion.config. El csproj incluye Conexion.config y marca CopyToOutputDirectory=Always. El archivo local existe y está ignorado por Git. No se encontró Conexion.config.ejemplo en la carpeta del proyecto ni incluido en Git, aunque README indica copiarlo para crear la configuración real.
+- El script database/scripts/LavanderiasGT.sql crea las 11 tablas base y no contiene INSERT. database/02_Login_Roles.sql agrega roles/accesos y solo asigna Administrador al menor IdUsuario si ya existe un usuario; no crea un usuario inicial. La revisión SQL anterior comprobó 15 tablas en BD_LavanderiaGT. Una base nueva requiere aprovisionar al menos una cuenta antes de probar Login.
+- La entrega mínima propuesta es una carpeta con el ejecutable y sus DLL dependientes, el archivo .exe.config y Conexion.config suministrado/configurado fuera de Git, para copiar a un equipo Windows con .NET Framework 4.8 y acceso a un SQL Server ya disponible. No se creó artefacto ni se publicó. La confirmación grupal para continuar está pendiente.
+## 2026-10-30 · Verificación de conexión para el equipo destino
+
+- Lectura de Conexion.config sin mostrar valores secretos: Data Source localhost,1433; Initial Catalog BD_LavanderiaGT; autenticación SQL Server. El archivo está excluido por .gitignore.
+- En una revisión previa, una consulta SQL de solo lectura abrió BD_LavanderiaGT con la configuración local. Esto comprueba el entorno de desarrollo, no un equipo destino distinto.
+- No se identificó el equipo donde se ejecutará la aplicación ni su dirección de red. No se modificó configuración, no se registró contraseña y no se declara comprobada la conexión desde el equipo destino.
+## 2026-10-30 · Comprobación de conexión con Conexion.config
+
+- Se abrió una conexión de solo lectura desde este equipo utilizando la configuración local sin imprimir la cadena ni credenciales. SELECT @@SERVERNAME, DB_NAME() devolvió sql_prog2a y BD_LavanderiaGT.
+- No se modificó el esquema ni datos. El resultado comprueba este equipo; no acredita conectividad desde otra computadora.
+## 2026-10-30 · Documento 10 (fila 11) — Fase 0, revisión de requisitos
+
+- Se leyeron los seis documentos solicitados: README.md, AGENTS.md, MEMORY.md, ESTADO_DOCUMENTOS.md, skills/11_Publicacion.md y database/CONEXION_DATABASE.md.
+- Según ESTADO_DOCUMENTOS.md, la fila 07 está marcada COMPLETADO. Las filas 01–06, 08 y 09 no están COMPLETADO ni No aplica. La nota de la fila 07 dice que Login/F5 y pruebas de integración manual siguen pendientes.
+- No se cambió ESTADO_DOCUMENTOS.md ni se cerró ninguna fila. Fase 1 no iniciada; se espera autorización del estudiante.
+## 2026-10-30 · Documento 10, Fase 1 — plan solicitado
+
+- El estudiante respondió «si» a la pregunta sobre preparar el plan de Fase 1. Se preparó un plan, pero todavía no se ejecutó la fase ni se modificó configuración. Se espera autorización explícita para iniciar.
+## 2026-10-30 · Documento 10, Fase 1 (10.3) — revisión de configuración
+
+- Con CMD se leyó App.config: usa configSource="Conexion.config". Datos.Conexion obtiene la cadena ConexionSQLServer de ConfigurationManager. El .csproj de Presentación incluye Conexion.config con CopyToOutputDirectory=Always.
+- Una lectura programática allowlisted de Conexion.config (sin mostrar la contraseña) confirmó Data Source localhost,1433; Initial Catalog BD_LavanderiaGT; usuario SQL sa; Encrypt=False; TrustServerCertificate=True; Pooling=False; MultipleActiveResultSets=False. .gitignore confirma que Conexion.config se excluye.
+- CMD confirmó que Conexion.config.ejemplo no existe junto al proyecto y git ls-files --error-unmatch confirmó que no está versionado. README indica copiar esa plantilla, por lo que la instrucción documental no concuerda con los archivos presentes. No se creó ni modificó plantilla debido a las restricciones del estudiante.
+- La conexión local había sido confirmada previamente con una consulta SQL de solo lectura (sql_prog2a / BD_LavanderiaGT). No se probó desde otro equipo. Prueba de destino marcada LO HAGO YO y pendiente.
+## 2026-10-30 · Documento 10, Fase 1 (10.3) — revisión de configuración
+
+- Con CMD se leyó App.config: usa configSource="Conexion.config". Datos.Conexion obtiene la cadena ConexionSQLServer de ConfigurationManager. El .csproj de Presentación incluye Conexion.config con CopyToOutputDirectory=Always.
+- Una lectura programática de solo campos permitidos de Conexion.config (sin mostrar la contraseña) confirmó Data Source localhost,1433; Initial Catalog BD_LavanderiaGT; usuario SQL sa; Encrypt=False; TrustServerCertificate=True; Pooling=False; MultipleActiveResultSets=False. .gitignore confirma que Conexion.config se excluye.
+- CMD confirmó que Conexion.config.ejemplo no existe junto al proyecto y git ls-files --error-unmatch confirmó que no está versionado. README indica copiar esa plantilla; la instrucción no concuerda con los archivos presentes. No se creó ni modificó plantilla debido a las restricciones del estudiante.
+- Program.cs llama NConexion.ProbarConexion y muestra un MessageBox con el resultado antes de abrir logoing. Una consulta SQL de solo lectura confirmó el acceso local (sql_prog2a / BD_LavanderiaGT). El usuario confirmó que la conexión desde el equipo de destino mostró el mensaje de éxito.
+
+2026-10-30, Doc. 10, paso 10.4: El usuario confirmó la compilación Release sin errores. Se verificaron los artefactos en bin\Release y se copiaron siete archivos a C:\Entrega_LavanderiaGT\Release, con autorización. No se modificó la salida original.
+
+2026-10-30, Doc. 10, paso 10.5: El usuario informó que funcionaron las pruebas de Login, Panel, Dashboard y CRUD en otro equipo, incluida la conexión. Resultado reportado por el usuario.
+
+2026-10-30, Doc. 10, paso 10.6: El usuario informó que el .bak está en C:\Respaldos. CMD localizó C:\Respaldos\BD_LavanderiaGT.bak con fecha 30/10/2026 y tamaño 6,410,240 bytes. No se ejecutó el script de backup ni una restauración de prueba.
+
+2026-10-30, Doc. 10, paso 10.6: Se añadió al README información de ejecución, archivos Release, conexión sin contraseña, respaldo, pruebas reportadas y responsabilidades nominales pendientes. docs contiene COMANDOS_RAPIDOS.md e HISTORIAL_PROMPTS.md; no se encontraron capturas de evidencia.
