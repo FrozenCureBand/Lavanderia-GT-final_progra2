@@ -4,7 +4,7 @@ Control de avance del proyecto **Pfinal_labanderia** · Programación II 2026.
 Solo el estudiante autoriza un cambio de estado. El asistente actualiza esta tabla
 después de recibir la autorización y de comprobar el resultado.
 
-**Documento activo: 01**
+**Documento activo: 11**
 
 > La asignación del equipo indicada por el estudiante numera Login y roles como Guía 06 (Integrante 1), Panel como Guía 07 y Dashboard como Guía 08. En las rutas locales, esos materiales aparecen como `skills/07_Login_Roles.md`, `skills/08_Panel_Navegacion.md` y `skills/09_Dashboard.md` respectivamente.
 
@@ -20,7 +20,7 @@ después de recibir la autorización y de comprobar el resultado.
 | 08 | Panel de navegación | [08_Panel_Navegacion.md](skills/08_Panel_Navegacion.md) | **PENDIENTE** | Corresponde a Guía 07 del equipo; queda para su responsable. Verificación previa compiló; integración con roles y pruebas manuales pendientes. |
 | 09 | Dashboard | [09_Dashboard.md](skills/09_Dashboard.md) | **PENDIENTE** | Corresponde a Guía 08 del equipo; queda para su responsable. Skill local pendiente. |
 | 10 | Revisión del proyecto | [10_Revision_Proyecto.md](skills/10_Revision_Proyecto.md) | BLOQUEADO | Skill PENDIENTE |
-| 11 | Publicación | [11_Publicacion.md](skills/11_Publicacion.md) | PENDIENTE | Skill PENDIENTE |
+| 11 | Publicación | [11_Publicacion.md](skills/11_Publicacion.md) | **ACTIVO** | Release compilado según el usuario; siete archivos copiados a `C:\Entrega_LavanderiaGT\Release`; el usuario informó pruebas correctas en otro equipo. `C:\Respaldos\BD_LavanderiaGT.bak` localizado, sin prueba de restauración. README actualizado y commit `c9effc2` enviado a origin. Evidencias visuales pendientes; documentos 01–09 no están todos cerrados. No marcar COMPLETADO. |
 
 ## Estados
 
@@ -56,3 +56,4 @@ después de recibir la autorización y de comprobar el resultado.
 | 2026-10-24 | 06 | Pedido del estudiante: repositorio público en GitHub. Contraseña movida a `Conexion.config` (ignorado); `git grep` sin coincidencias; repositorio creado y subido; clon de prueba compila. |
 | 2026-10-30 | 08 (Panel; solicitado como Doc. 07) | Revisión de nombres, eventos, destinos y referencias; MSBuild correcto (0 advertencias/errores con salida `obj\PanelBuild`). Navegación manual y cierre pendientes. |
 | 2026-10-30 | Guía 06 del equipo (Login y roles; local skill 07) | Integrante 1 completó la revisión estática. Reconstrucción correcta y consulta SQL de solo lectura ejecutada con credenciales ficticias; validación con cuenta real e integración manual pendientes. Guías 07 (Panel) y 08 (Dashboard) quedan pendientes para sus responsables. |
+| 2026-10-30 | 11 | Release compilado según confirmación del usuario; se identificaron y copiaron siete archivos a una carpeta externa; el usuario reportó que Login, Panel, Dashboard, CRUD y conexión funcionaron en otro equipo. Archivo `.bak` localizado en `C:\Respaldos`; no se ejecutó el script ni se probó restauración. README actualizado y cambios documentales enviados a `origin`. Evidencias visuales pendientes; documento permanece ACTIVO. |
