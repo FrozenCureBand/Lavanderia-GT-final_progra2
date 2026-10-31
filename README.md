@@ -127,7 +127,7 @@ Conexion.config debe estar junto al ejecutable y contiene la cadena privada de c
 
 El usuario confirmo que el ejecutable se conecto a SQL Server desde el equipo de destino y que funcionaron las pruebas de Login, Panel, Dashboard y CRUD.
 
-Respaldo informado y localizado en el equipo: C:\Respaldos\BD_LavanderiaGT.bak. La presencia del archivo se comprobo por listado; no se ejecuto el script SQL ni una restauracion de prueba.
+Se encontraron archivos `BD_LavanderiaGT.bak` en `database\` de esta copia local y en `C:\Respaldos`; cada uno figura con 6,410,240 bytes y fecha 30/10/2026. El `.bak` de `database\` está ignorado por Git, así que no forma parte de GitHub ni de un clon nuevo. No se verificó que ambos archivos sean idénticos ni se probó restaurarlos.
 
 Evidencias visuales disponibles en docs, carpeta plana: `Evidencia_Login.png`, `Evidencia_Panel.png`, `Evidencia_Dashboard.png`, `Evidencia_CRUD_OtroModulo.png` y `Evidencia_CRUD_OtroModuloAgregar1.png` a `Evidencia_CRUD_OtroModuloAgregar3.png`. Las capturas CRUD muestran el módulo Tipos de prenda y el alta de un registro; edición y eliminación fueron reportadas por el usuario, sin capturas específicas.
 

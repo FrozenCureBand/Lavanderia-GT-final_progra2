@@ -655,3 +655,17 @@ Se revisó la solución, los scripts SQL, el respaldo y los archivos de Release 
 ### Resultado
 
 La solución y el ejecutable portable existen; falta un script de exportación completa de la base y un script de datos de prueba para todas las tablas. El respaldo real existe fuera del repositorio, pero no se probó restaurarlo. El `.exe` no es un instalador.
+
+## Prompt 37 — 2026-10-30 · Documento 11, respaldo `.bak`
+
+### Texto completo
+
+en database ya esta un .bak
+
+### Resumen de la respuesta
+
+Se verificó el archivo de respaldo señalado dentro de la carpeta `database` del proyecto.
+
+### Resultado
+
+`database\BD_LavanderiaGT.bak` existe localmente y Git lo ignora. No forma parte de GitHub; no se verificó su restauración.
