@@ -147,3 +147,80 @@ Se hizo inspección estática del Login, reconstrucción Debug y consulta SQL de
 ### Resultado
 
 Revisión estática y compilación correctas; autenticación real e integración pendientes.
+
+## Prompt 08 — 2026-10-30 19:45 — Doc. 09, Integración general (skill 10)
+
+### Texto completo
+
+DOCUMENTO ACTIVO: 09 - INTEGRACIÓN GENERAL
+Lee README.md, AGENTS.md, MEMORY.md, ESTADO_DOCUMENTOS.md,
+skills/10_Revision_Proyecto.md y database/CONEXION_DATABASE.md.
+Inspecciona la solución real en src y las cuatro capas.
+Revisa formularios .cs, .Designer.cs, referencias y eventos.
+Identifica Login, roles, Panel, Dashboard y todos los CRUD.
+Verifica tablas, campos, PK y FK reales de SQL Server.
+Muestra una lista breve de conflictos, faltantes y errores.
+NO cambies código ni diseños. Espera autorización.
+
+### Resumen de la respuesta
+
+Se inspeccionaron los documentos indicados, los cuatro proyectos y sus referencias, formularios y eventos, y el esquema de `BD_LavanderiaGT` mediante consultas de solo lectura. Se identificaron discrepancias documentales y de modelo, módulos sin CRUD y destinos del Panel que reutilizan pantallas. No se modificó código ni diseño. No se ejecutaron compilación ni pruebas funcionales; la revisión es estática y de esquema.
+
+### Resultado
+
+Revisión completada; implementación y cambios posteriores pendientes de autorización.
+
+## Prompt 09 — 2026-10-30 19:52 — Doc. 09, Integración secuencial Login → Panel
+
+### Texto completo
+
+Con el plan aprobado, integra únicamente el flujo:
+Login válido -> Panel de navegación -> módulos CRUD y Dashboard.
+Respeta los roles reales de la base de datos.
+Utiliza eventos y métodos sencillos de Windows Forms.
+No rediseñes formularios ni uses patrones avanzados.
+Trabaja una conexión entre pantallas a la vez.
+Espera confirmación de cada prueba antes de continuar.
+
+### Resumen de la respuesta
+
+Se revisó la conexión Login → Panel existente: logoing llama a Negocio, guarda el usuario y los accesos del rol, muestra precentacion y oculta Login; el Panel configura la visibilidad según los accesos. El Panel carga Dashboard al abrir. No se modificó código ni diseño en esta etapa. MSBuild 17.14.40 compiló la solución en una carpeta de salida alternativa; la salida habitual estaba bloqueada por un proceso. Queda pendiente la prueba manual de Login válido y acceso al Panel.
+
+### Resultado
+
+Revisión/compilación correctas; prueba manual pendiente, sin avanzar a la siguiente conexión.
+## Prompt 10 — 2026-10-30 19:55 — Doc. 09, revisión de capas
+
+### Texto completo
+
+Revisa: Entidad (propiedades), Datos (SQL parametrizado),
+Negocio (métodos y validaciones básicas), Presentación
+(eventos y controles existentes).
+Confirma que Presentación no consulta SQL Server directamente.
+Identifica errores reales y propone cambios mínimos.
+No agregues paquetes, patrones ni código avanzado.
+
+### Resumen de la respuesta
+
+Se hizo revisión estática de las entidades, operaciones y parámetros SQL, métodos de Negocio y formularios/eventos de Presentación. No se encontró acceso SQL directo desde Presentación y el texto variable de búsqueda/escritura se pasa como parámetro. Se identificó una discrepancia real entre las columnas Estado nullable de cuatro tablas y su representación bool; si la fila trae NULL, Datos lo transforma en false. También se confirmó una referencia de proyecto Presentación → Datos sin uso detectado en el código y documentación de conexión desactualizada. No se aplicaron cambios ni se ejecutaron pruebas.
+
+### Resultado
+
+Revisión estática completada; correcciones propuestas, pendientes de autorización.
+## Prompt 11 — 2026-10-30 19:56 — Doc. 09, condiciones de cierre
+
+### Texto completo
+
+Codex: registra SOLO resultados comprobados.
+Marca Documento 09 como COMPLETADO únicamente cuando
+los tres integrantes confirmen las pruebas.
+No inicies el Documento 10 ni publiques el sistema.
+Espera autorización expresa del grupo.
+
+### Resumen de la respuesta
+
+Se conservará Documento 09 sin cerrar hasta recibir confirmación de pruebas de los tres integrantes. No se iniciará Documento 10 ni se publicará el sistema. No se modificó el estado documental.
+
+### Resultado
+
+Instrucción registrada; confirmaciones de los tres integrantes pendientes.

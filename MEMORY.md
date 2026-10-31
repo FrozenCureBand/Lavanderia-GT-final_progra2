@@ -433,3 +433,32 @@ código solo las líneas de estilo de la paginación.
 - La consulta parametrizada equivalente a Login se ejecutó en modo de solo lectura con usuario y claves ficticios; devolvió 0 coincidencias y no modificó la base. La consulta de conteo confirmó 3 roles, 13 accesos y 39 asociaciones rol-acceso.
 - Guía 06 de la asignación del equipo (Login, Integrante 1) quedó marcada completada en `ESTADO_DOCUMENTOS.md`. La numeración local conserva el Login como skill 07; la Guía 07 del equipo (Panel, skill local 08) y Guía 08 (Dashboard, skill local 09) quedan pendientes para sus responsables.
 - No se ejecutó F5 ni se probó inicio de sesión válido, inválido o inactivo en la interfaz. Pruebas de integración manual pendientes.
+
+## 2026-10-30 · Doc. 09 — Integración general (skill 10), revisión estática
+
+- Se inspeccionaron README, AGENTS, MEMORY, ESTADO_DOCUMENTOS, `skills/10_Revision_Proyecto.md`, `database/CONEXION_DATABASE.md`, solución, cuatro proyectos, formularios `.cs`/`.Designer.cs`, referencias y eventos.
+- Los documentos discrepan: el README de la raíz describe una cadena de librerías con PostgreSQL/Npgsql; el proyecto describe una lavandería con SQL Server. El `ESTADO_DOCUMENTOS.md` interno indica Documento 01 activo y Documento 10 bloqueado; el skill 10 indica pendiente/bloqueado, mientras que el usuario solicitó revisar como Doc. 09.
+- Se consultó `BD_LavanderiaGT` en modo de solo lectura mediante la conexión local. La metadata confirmó 15 tablas, columnas, tipos, nulabilidad, PK, identidad y FK. Las PK usan `Id...`, no el prefijo `Codigo` indicado como convención general. Las cuatro tablas añadidas por Login/roles (`Tbl_Roles`, `Tbl_Accesos`, `Tbl_RolesAccesos` y FK `Tbl_Usuarios.IdRol`) están en la base real pero no en el script base `database/scripts/LavanderiasGT.sql`.
+- Las capas y referencias corresponden a Entidad → Datos → Negocio → Presentación; Presentación referencia además Datos y Entidad, aunque no se detectó acceso SQL directo en formularios. Los eventos revisados en Designer tienen sus métodos encontrados en el código.
+- Hay implementación CRUD por capas para Clientes, Recepciones, Tarifas, Usuarios, Entregas, Procesos, TiposPrenda, Servicios y Roles. No se encontró CRUD de Sucursales, DetalleRecepciones ni EstadosProceso. Los destinos de Panel para esos módulos reutilizan `inicio`, `Recepciones` o `Procesos`.
+- Se verificó estáticamente Login → NLogin/DLogin, carga de rol y accesos; el Panel filtra opciones y el Dashboard `inicio` pide indicadores a NInicio. No se probó autenticación en UI ni ejecución del Dashboard.
+- No se modificaron código ni diseños. No se ejecutaron build ni pruebas funcionales. El esquema SQL fue consultado en modo de solo lectura; resultados y límites registrados en la revisión del Doc. 09.
+
+## 2026-10-30 · Doc. 09 — Paso 1: Login válido → Panel de navegación
+
+- Revisión estática de logoing.btnIngresar_Click, NLogin, DLogin, SesionActual y precentacion: el flujo existente valida por Negocio, recupera accesos asociados al rol, muestra el Panel y oculta el Login. DLogin filtra usuarios y roles activos y usa parámetros SQL.
+- precentacion.ConfigurarAccesos() oculta botones según los códigos de acceso guardados en SesionActual; el evento Load abre Dashboard automáticamente si el rol permite Inicio. No se cambió esta conexión ni se inició todavía la integración de destinos individuales.
+- No se modificó código ni diseño. La reconstrucción de Pfinal_labanderia.slnx con MSBuild 17.14.40, Debug y salida alternativa obj\LoginPanelBuild terminó correctamente. La reconstrucción a salida habitual falló al copiar DLL bloqueadas por otro proceso. La ejecución con dotnet MSBuild no fue válida para este proyecto WinForms clásico y falló al procesar recursos.
+- Prueba manual de cuenta válida → Panel y permisos visibles/ocultos: pendiente de confirmación del estudiante. No se continúa a otra conexión hasta recibirla.
+## 2026-10-30 · Doc. 09 — Revisión estática de las cuatro capas
+
+- Revisión estática de Entidad, Datos, Negocio y fuentes de Presentación, incluidos formularios y Designer. Presentación no contiene using Datos ni llamadas a Datos; no se encontró SqlConnection/SqlCommand en fuentes de formularios. El proyecto Presentación sí mantiene una referencia a Datos en el csproj.
+- Los comandos SQL observados usan parámetros para valores variables; la concatenación encontrada compone fragmentos SQL fijos (cláusula de búsqueda o campo Clave opcional), no concatena el texto ingresado por el usuario.
+- La metadata SQL consultada anteriormente confirma que Estado permite NULL en Tbl_Clientes, Tbl_Servicios, Tbl_TiposPrenda y Tbl_Tarifas. En las clases D correspondientes, el mapeo de Estado asigna false si el valor leído es DBNull; una fila con Estado NULL se interpreta como inactiva. No se verificó que haya filas actuales con ese valor.
+- DRecepcion revisa DBNull para FechaRecepcion, FechaEntregaEstimada y Total antes de convertir; Entidad modela las fechas como Nullable y Total como decimal con valor predeterminado 0.
+- database/CONEXION_DATABASE.md conserva el inventario antiguo de 11 tablas y afirma que la contraseña reside en App.config; App.config actual delega la cadena a Conexion.config. La revisión anterior consultó 15 tablas en BD_LavanderiaGT.
+- No se modificó código ni diseño. No se ejecutaron compilación, consultas adicionales a SQL Server ni pruebas funcionales en esta revisión.
+## 2026-10-30 · Doc. 09 — Criterio de cierre indicado por el grupo
+
+- Instrucción recibida: marcar Documento 09 como COMPLETADO solo cuando los tres integrantes confirmen sus pruebas; no iniciar Documento 10 ni publicar el sistema antes de autorización expresa del grupo.
+- En esta conversación no se han recibido las tres confirmaciones. Documento 09 permanece sin marcar como COMPLETADO. No se cambió ESTADO_DOCUMENTOS.md ni se inició el Documento 10 o publicación.
