@@ -4,9 +4,10 @@ Proyecto final del curso **Programación II 2026**.
 Aplicación de escritorio para gestionar una lavandería: clientes, recepciones, tarifas, usuarios,
 entregas, procesos, tipos de prenda y servicios, con una pantalla de Inicio (dashboard).
 
+> **Repositorio de entrega:** [FrozenCureBand/Lavanderia-GT-final_progra2](https://github.com/FrozenCureBand/Lavanderia-GT-final_progra2)
+
 > Estado de entrega, 30 de octubre de 2026: Release compilado sin errores según el usuario. El usuario también confirmó que la copia funcionó en otro equipo con conexión, Login, Panel, Dashboard y CRUD.
-> Las evidencias visuales y el estado de cierre de documentos anteriores siguen pendientes. Ver [ESTADO_DOCUMENTOS.md](ESTADO_DOCUMENTOS.md).
-> Ver [ESTADO_DOCUMENTOS.md](ESTADO_DOCUMENTOS.md).
+> Los documentos 01–09 están COMPLETADOS por confirmación del estudiante; el documento 11 sigue ACTIVO. Las evidencias principales están en `docs`; la captura de Clientes permanece local por contener datos de contacto. Ver [ESTADO_DOCUMENTOS.md](ESTADO_DOCUMENTOS.md).
 
 ## Tecnologías (comprobadas en los archivos `.csproj`)
 
@@ -65,7 +66,7 @@ Requisitos: Git, Visual Studio con soporte para .NET Framework 4.8 y archivos `.
    260 caracteres y algunos paquetes NuGet tienen nombres largos:
    ```
    cd /d C:\Proyectos
-   git clone https://github.com/cpradoc2/Lavanderia-GT-final_progra2.git
+   git clone https://github.com/FrozenCureBand/Lavanderia-GT-final_progra2.git
    ```
 2. Crear el archivo de conexión. **No viene en el repositorio** porque lleva la contraseña de SQL Server:
    ```

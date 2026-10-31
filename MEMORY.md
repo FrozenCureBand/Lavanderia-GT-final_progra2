@@ -515,3 +515,7 @@ código solo las líneas de estilo de la paginación.
 2026-10-30 21:31, solicitud de cierre de documentos 01–09: el estudiante autorizó cerrar las filas que tuvieran respaldo. ESTADO_DOCUMENTOS marca 01–04 como COMPLETADO con base en árbol confirmado, conexión exitosa reportada en la aplicación destino y resultados CRUD previos más confirmación del usuario. 07 ya estaba COMPLETADO y ahora registra Login válido confirmado. 05 continúa pendiente porque no hay CRUD maestro-detalle verificado; 06 porque falta agregar al compañero; 08 porque faltan pruebas individuales de rutas de menú; 09 porque el criterio previo requiere confirmación de los tres integrantes y no se registraron las tres. Documento 11 sigue ACTIVO.
 
 2026-10-30 21:34, cierre definitivo de 05, 06, 08 y 09: el estudiante confirmó y autorizó marcar los cuatro COMPLETADOS. Se actualizaron ESTADO_DOCUMENTOS.md y sus skills. Esta actualización registra la confirmación del estudiante; no se ejecutaron pruebas nuevas ni se verificó independientemente la incorporación del colaborador o las confirmaciones individuales del resto del grupo.
+
+2026-10-30 21:35, Doc. 11, consulta del ejecutable: CMD confirmó que `C:\Entrega_LavanderiaGT\Release\Pfinal_labanderia.exe` existe. Es el ejecutable de la carpeta de entrega externa al repositorio.
+
+2026-10-30, Doc. 11, README: se agregó el enlace al repositorio de entrega `FrozenCureBand/Lavanderia-GT-final_progra2` y se cambió la instrucción `git clone` para usar ese fork. Se conserva el remoto upstream sin cambios.

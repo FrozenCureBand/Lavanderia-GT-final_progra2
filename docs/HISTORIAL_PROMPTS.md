@@ -611,3 +611,31 @@ El estudiante confirmó y autorizó el cierre definitivo de los documentos 05, 0
 ### Resultado
 
 Las cuatro filas y sus skills se actualizaron a COMPLETADO por confirmación del estudiante. No se ejecutaron pruebas nuevas ni se verificaron independientemente el acceso del compañero o las confirmaciones individuales de los demás integrantes.
+
+## Prompt 34 — 2026-10-30 · Documento 11, ubicación del ejecutable
+
+### Texto completo
+
+el ejecubale del proyecto donde esta para probarlo?
+
+### Resumen de la respuesta
+
+Se indicó la ubicación de la carpeta de entrega y se confirmó con CMD que el ejecutable existe.
+
+### Resultado
+
+`C:\Entrega_LavanderiaGT\Release\Pfinal_labanderia.exe` existe.
+
+## Prompt 35 — 2026-10-30 · Documento 11, enlace del repositorio
+
+### Texto completo
+
+modificalo que apunte al mio [https://github.com/FrozenCureBand/Lavanderia-GT-final_progra2](https://github.com/FrozenCureBand/Lavanderia-GT-final_progra2)
+
+### Resumen de la respuesta
+
+Se agregó el enlace del fork de FrozenCureBand al README y se actualizó el comando de clonación.
+
+### Resultado
+
+README apunta al repositorio del estudiante; no se cambiaron los remotos de Git.
