@@ -2,8 +2,7 @@ namespace Entidad
 {
     /// <summary>
     /// Entidad Usuario: representa UNA fila de dbo.Tbl_Usuarios.
-    /// IMPORTANTE: no tiene la propiedad Clave. La contraseña no se consulta ni se muestra
-    /// en pantalla por seguridad (se trabajará en el documento de Login y roles).
+    /// No tiene la propiedad Clave para no cargar la contraseña en las consultas de lista.
     /// </summary>
     public class Usuario
     {
@@ -13,6 +12,8 @@ namespace Entidad
         public string Correo { get; set; }
         public int IdSucursal { get; set; }                    // Llave foránea a Tbl_Sucursales
         public string NombreSucursal { get; set; }             // Tbl_Sucursales.Nombre (viene de un JOIN)
+        public int? IdRol { get; set; }                        // Rol asociado al usuario
+        public string NombreRol { get; set; }                   // Nombre del rol para mostrarlo
         public bool Estado { get; set; }                       // true = Activo
     }
 }

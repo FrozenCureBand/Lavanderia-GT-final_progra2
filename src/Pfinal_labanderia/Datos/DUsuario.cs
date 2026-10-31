@@ -8,7 +8,7 @@ namespace Datos
 {
     /// <summary>
     /// Acceso a datos de dbo.Tbl_Usuarios: consultar, insertar, actualizar y eliminar.
-    /// La clave llega YA CIFRADA desde la capa Negocio; aquí nunca se lee ni se muestra.
+    /// La clave se recibe con el formato SHA-256 ya usado por Negocio; las listas no la consultan ni la muestran.
     /// Los valores escritos por el usuario viajan como PARÁMETROS para evitar inyección SQL.
     /// </summary>
     public class DUsuario
@@ -44,9 +44,10 @@ namespace Datos
 
             string sql =
                 "SELECT u.IdUsuario, u.NombreUsuario, u.NombreCompleto, u.Correo, " +
-                "       u.IdSucursal, s.Nombre AS NombreSucursal, u.Estado " +
+                "       u.IdSucursal, s.Nombre AS NombreSucursal, u.IdRol, r.NombreRol, u.Estado " +
                 "FROM dbo.Tbl_Usuarios u " +
-                "JOIN dbo.Tbl_Sucursales s ON s.IdSucursal = u.IdSucursal ";
+                "JOIN dbo.Tbl_Sucursales s ON s.IdSucursal = u.IdSucursal " +
+                "LEFT JOIN dbo.Tbl_Roles r ON r.IdRol = u.IdRol ";
             if (texto != null)
             {
                 // COLLATE ..._CI_AI: no distingue mayúsculas (CI) ni tildes (AI).
@@ -76,6 +77,8 @@ namespace Datos
                             usuario.Correo = dr["Correo"].ToString();     // NULL -> ""
                             usuario.IdSucursal = Convert.ToInt32(dr["IdSucursal"]);
                             usuario.NombreSucursal = dr["NombreSucursal"].ToString();
+                            usuario.IdRol = dr["IdRol"] == DBNull.Value ? (int?)null : Convert.ToInt32(dr["IdRol"]);
+                            usuario.NombreRol = dr["NombreRol"].ToString();
                             usuario.Estado = dr["Estado"] != DBNull.Value && Convert.ToBoolean(dr["Estado"]);
                             lista.Add(usuario);
                         }
@@ -116,12 +119,12 @@ namespace Datos
             }
         }
 
-        /// <summary>INSERTAR: guarda un usuario nuevo con su clave cifrada y devuelve el IdUsuario generado.</summary>
-        public int Insertar(Usuario usuario, string claveCifrada)
+        /// <summary>INSERTAR: guarda la clave en el formato existente y devuelve el IdUsuario generado.</summary>
+        public int Insertar(Usuario usuario, string clave)
         {
             string sql =
-                "INSERT INTO dbo.Tbl_Usuarios (IdSucursal, NombreUsuario, Clave, NombreCompleto, Correo, Estado) " +
-                "VALUES (@IdSucursal, @NombreUsuario, @Clave, @NombreCompleto, @Correo, @Estado); " +
+                "INSERT INTO dbo.Tbl_Usuarios (IdSucursal, NombreUsuario, Clave, NombreCompleto, Correo, Estado, IdRol) " +
+                "VALUES (@IdSucursal, @NombreUsuario, @Clave, @NombreCompleto, @Correo, @Estado, @IdRol); " +
                 "SELECT CAST(SCOPE_IDENTITY() AS int);";
 
             try
@@ -130,7 +133,7 @@ namespace Datos
                 using (SqlCommand cmd = new SqlCommand(sql, cn))
                 {
                     AgregarParametros(cmd, usuario);
-                    cmd.Parameters.Add("@Clave", SqlDbType.VarChar, 255).Value = claveCifrada;
+                    cmd.Parameters.Add("@Clave", SqlDbType.VarChar, 255).Value = clave;
                     cn.Open();
                     return (int)cmd.ExecuteScalar();
                 }
@@ -146,15 +149,15 @@ namespace Datos
         }
 
         /// <summary>
-        /// ACTUALIZAR: modifica un usuario. Si 'claveCifrada' es null, la clave NO se cambia.
+        /// ACTUALIZAR: modifica un usuario. Si 'clave' es null, la clave NO se cambia.
         /// Devuelve false si el usuario ya no existe.
         /// </summary>
-        public bool Actualizar(Usuario usuario, string claveCifrada)
+        public bool Actualizar(Usuario usuario, string clave)
         {
             // Si no hay clave nueva, la consulta no toca la columna Clave.
             string sql = "UPDATE dbo.Tbl_Usuarios SET IdSucursal = @IdSucursal, NombreUsuario = @NombreUsuario, " +
-                         "NombreCompleto = @NombreCompleto, Correo = @Correo, Estado = @Estado" +
-                         (claveCifrada != null ? ", Clave = @Clave" : "") +
+                         "NombreCompleto = @NombreCompleto, Correo = @Correo, Estado = @Estado, IdRol = @IdRol" +
+                         (clave != null ? ", Clave = @Clave" : "") +
                          " WHERE IdUsuario = @IdUsuario;";
 
             try
@@ -164,9 +167,9 @@ namespace Datos
                 {
                     AgregarParametros(cmd, usuario);
                     cmd.Parameters.Add("@IdUsuario", SqlDbType.Int).Value = usuario.IdUsuario;
-                    if (claveCifrada != null)
+                    if (clave != null)
                     {
-                        cmd.Parameters.Add("@Clave", SqlDbType.VarChar, 255).Value = claveCifrada;
+                        cmd.Parameters.Add("@Clave", SqlDbType.VarChar, 255).Value = clave;
                     }
                     cn.Open();
                     return cmd.ExecuteNonQuery() > 0;
@@ -212,6 +215,7 @@ namespace Datos
             cmd.Parameters.Add("@Correo", SqlDbType.VarChar, 100).Value =
                 string.IsNullOrWhiteSpace(usuario.Correo) ? (object)DBNull.Value : usuario.Correo;
             cmd.Parameters.Add("@Estado", SqlDbType.Bit).Value = usuario.Estado;
+            cmd.Parameters.Add("@IdRol", SqlDbType.Int).Value = (object)usuario.IdRol ?? DBNull.Value;
         }
     }
 }

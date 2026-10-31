@@ -102,6 +102,17 @@ sc query MSSQLSERVER
 sqlcmd -S localhost,1433 -U sa -Q "SELECT @@VERSION"
 ```
 
+## Login y roles (Guía 06 del equipo, Integrante 1)
+
+Reconstrucción Debug verificada el 2026-10-30 con MSBuild 17.14.40 y salida aislada:
+
+```bat
+cd /d C:\2026_ProgramacionII\ProyectoFinal_LavanderiasMultinegocio\src\Lavanderia-GT-final_progra2
+"C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe" src\Pfinal_labanderia\Pfinal_labanderia.slnx /t:Rebuild /p:Configuration=Debug /p:OutDir=obj\LoginReviewBuild\ /verbosity:minimal
+```
+
+Resultado de esta revisión: compilación correcta, 0 advertencias y 0 errores. La consulta parametrizada de Login se ejecutó con un nombre de usuario ficticio y devolvió cero coincidencias; esto comprobó la consulta y conexión, no una autenticación válida. La prueba manual con una cuenta del equipo y F5 sigue pendiente.
+
 ## Git (documento 06, BLOQUEADO)
 
 Pendiente: se completará al activar el documento 06.

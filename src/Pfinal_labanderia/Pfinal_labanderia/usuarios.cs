@@ -17,6 +17,8 @@ namespace Pfinal_labanderia
     {
         // Capa Negocio: la Presentación no usa la capa Datos ni SQL Server directamente.
         private readonly NUsuario negocioUsuarios = new NUsuario();
+        private readonly NRol negocioRoles = new NRol();
+        private readonly ComboBox comboRol = new ComboBox();
 
         // ---------------------------------------------------------------
         // PAGINACIÓN (solo en la capa Presentación)
@@ -45,7 +47,7 @@ namespace Pfinal_labanderia
         //   textCodigoCliente   -> IdUsuario       (solo lectura)
         //   textServicio        -> IdSucursal
         //   textBox1            -> NombreUsuario
-        //   textRecargoServicio -> Clave           (se escribe con *, se guarda cifrada, nunca se muestra)
+        //   textRecargoServicio -> Clave           (se escribe con *, se guarda como antes y no se consulta)
         //   textTotalServios    -> NombreCompleto
         //   textDescripcion     -> Correo
         //   radioActivo / radioInactivo -> Estado
@@ -53,6 +55,12 @@ namespace Pfinal_labanderia
         public usuarios()
         {
             InitializeComponent();
+            comboRol.Name = "comboRolUsuario";
+            comboRol.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboRol.Location = new Point(680, 125);
+            comboRol.Width = 250;
+            tabPage2.Controls.Add(new Label { Text = "Rol", Location = new Point(680, 100), AutoSize = true });
+            tabPage2.Controls.Add(comboRol);
 
             // Los eventos se conectan aquí (y no en el Designer.cs, que no se modifica).
             this.Load += FormularioUsuarios_Load;
@@ -78,8 +86,20 @@ namespace Pfinal_labanderia
             UbicarControlesPaginacion();
             ConfigurarTabla();
             ConfigurarCampos();
+            CargarRoles();
             ConsultarUsuarios();
             LimpiarCampos();
+        }
+
+        private void CargarRoles()
+        {
+            try
+            {
+                comboRol.DataSource = negocioRoles.Consultar().FindAll(r => r.Estado);
+                comboRol.DisplayMember = "NombreRol";
+                comboRol.ValueMember = "IdRol";
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Roles", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         /// <summary>La tabla solo muestra datos: el usuario no escribe en ella.</summary>
@@ -188,6 +208,8 @@ namespace Pfinal_labanderia
             columnas["Correo"].HeaderText = "Correo";
             columnas["IdSucursal"].Visible = false;
             columnas["NombreSucursal"].HeaderText = "Sucursal";
+            if (columnas.Contains("NombreRol")) columnas["NombreRol"].HeaderText = "Rol";
+            if (columnas.Contains("IdRol")) columnas["IdRol"].Visible = false;
             columnas["Estado"].HeaderText = "Activo";
         }
 
@@ -370,6 +392,7 @@ namespace Pfinal_labanderia
             textTotalServios.Clear();
             textDescripcion.Clear();
             radioActivo.Checked = true;   // Un usuario nuevo empieza Activo.
+            if (comboRol.Items.Count > 0) comboRol.SelectedIndex = 0;
             MarcarFilaSeleccionada();
         }
 
@@ -393,6 +416,7 @@ namespace Pfinal_labanderia
             usuario.NombreCompleto = textTotalServios.Text;
             usuario.Correo = textDescripcion.Text;
             usuario.Estado = radioActivo.Checked;
+            usuario.IdRol = comboRol.SelectedValue == null ? (int?)null : Convert.ToInt32(comboRol.SelectedValue);
             return true;
         }
 
@@ -411,6 +435,7 @@ namespace Pfinal_labanderia
             textDescripcion.Text = usuario.Correo;
             radioActivo.Checked = usuario.Estado;
             radioInactivo.Checked = !usuario.Estado;
+            comboRol.SelectedValue = usuario.IdRol.HasValue ? (object)usuario.IdRol.Value : null;
         }
 
         /// <summary>Después de guardar, editar o eliminar: avisa, vuelve a consultar y limpia los campos.</summary>
@@ -447,7 +472,7 @@ namespace Pfinal_labanderia
             LimpiarCampos();
         }
 
-        /// <summary>Guardar: inserta un usuario NUEVO (la clave se guarda cifrada).</summary>
+        /// <summary>Guardar: inserta un usuario con el formato de clave que ya utiliza el CRUD.</summary>
         private void BotonGuardar_Click(object sender, EventArgs e)
         {
             try

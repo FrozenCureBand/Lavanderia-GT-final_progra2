@@ -106,6 +106,8 @@
       <DependentUpon>precentacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="roles.cs"><SubType>Form</SubType></Compile>
+    <Compile Include="SesionActual.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recepciones.cs">
       <SubType>Form</SubType>

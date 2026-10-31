@@ -416,3 +416,20 @@ código solo las líneas de estilo de la paginación.
 - `DInicio` contiene además consultas estáticas para el resto de los indicadores. No fueron ejecutadas contra SQL Server ni verificadas en la interfaz.
 - Reconstrucción de `Pfinal_labanderia.slnx` con MSBuild 17.14.40 y salida alternativa `obj\\DashboardBuild`: correcta, 0 advertencias y 0 errores. La reconstrucción con salida `bin\\Debug` no pudo copiar DLL bloqueadas y terminó con 6 errores; la salida alternativa completó la compilación.
 - Prueba de ejecución/F5 y comparación de valores con SQL Server: pendientes.
+
+## 2026-10-30 · Doc. 06 (Login y roles; skill 07) · implementación autorizada
+
+- Se consultó `BD_LavanderiaGT` usando el `Conexion.config` local y se aplicó `database/02_Login_Roles.sql`. Se verificaron los roles Administrador, Recepcionista y Operador, con 13, 4 y 3 accesos habilitados. `Tbl_Usuarios` quedó con `IdRol` nullable y FK a `Tbl_Roles`; no se modificó la columna ni los valores de claves existentes.
+- Se asignó el primer usuario por `IdUsuario` al rol Administrador para facilitar la configuración. Quedaron 1 de 10 usuarios con rol; los demás pueden asignarse desde el CRUD de Usuarios.
+- Entidad incorpora `Rol`, `Acceso`, `Usuario.IdRol` y `Usuario.NombreRol`. Datos incorpora `DLogin` (validación parametrizada y consulta de accesos), `DRol` (CRUD de roles y permisos) y JOIN de rol en `DUsuario`. Negocio incorpora `NLogin` y `NRol`; Login acepta el formato actual de la base y SHA-256, que el CRUD aplica al guardar cambios. No se migraron contraseñas.
+- Presentación valida el Login contra Negocio, conserva el usuario y rol de la sesión, filtra opciones del menú con los permisos guardados, abre la primera opción autorizada si Inicio está deshabilitado y muestra usuario/rol en el panel y formularios. Usuarios permite elegir un rol. Se agregó el formulario CRUD `roles`, con casillas para configurar accesos.
+- Comprobado: el script SQL se ejecutó; la consulta confirmó tres roles, permisos iniciales y la asignación descrita. Reconstrucción de `Pfinal_labanderia.slnx` con MSBuild 17.14.40 y salida `obj\\LoginRolesBuild`: correcta, 0 advertencias y 0 errores.
+- No se probó el flujo de Login ni los formularios en ejecución. Prueba manual pendiente.
+
+## 2026-10-30 · Revisión de Login · Guía 06 del equipo, Integrante 1
+
+- Inspección estática confirmó el evento `btnIngresar_Click` en `logoing`, llamada a `NLogin`, validación SQL parametrizada en `DLogin`, filtro de usuario/rol activos y consulta de permisos. La sesión alimenta el menú y los encabezados agregados por código; no se modificaron formularios ni diseñadores en esta revisión.
+- Reconstrucción de `Pfinal_labanderia.slnx` con MSBuild 17.14.40, configuración Debug y salida `obj\\LoginReviewBuild`: correcta, 0 advertencias y 0 errores.
+- La consulta parametrizada equivalente a Login se ejecutó en modo de solo lectura con usuario y claves ficticios; devolvió 0 coincidencias y no modificó la base. La consulta de conteo confirmó 3 roles, 13 accesos y 39 asociaciones rol-acceso.
+- Guía 06 de la asignación del equipo (Login, Integrante 1) quedó marcada completada en `ESTADO_DOCUMENTOS.md`. La numeración local conserva el Login como skill 07; la Guía 07 del equipo (Panel, skill local 08) y Guía 08 (Dashboard, skill local 09) quedan pendientes para sus responsables.
+- No se ejecutó F5 ni se probó inicio de sesión válido, inválido o inactivo en la interfaz. Pruebas de integración manual pendientes.

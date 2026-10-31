@@ -45,8 +45,10 @@
     <Compile Include="NConexion.cs" />
     <Compile Include="NEntrega.cs" />
     <Compile Include="NInicio.cs" />
+    <Compile Include="NLogin.cs" />
     <Compile Include="NProceso.cs" />
     <Compile Include="NRecepcion.cs" />
+    <Compile Include="NRol.cs" />
     <Compile Include="NServicio.cs" />
     <Compile Include="NTarifa.cs" />
     <Compile Include="NTipoPrenda.cs" />

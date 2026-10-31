@@ -1,13 +1,13 @@
 using System.Collections.Generic;
-using System.Security.Cryptography;   // SHA256: cifrado de una sola vía para las claves
-using System.Text;                    // Encoding y StringBuilder
+using System.Security.Cryptography;
+using System.Text;
 using Datos;
 using Entidad;
 
 namespace Negocio
 {
     /// <summary>
-    /// Reglas de negocio de Usuarios: valida los datos y CIFRA la clave antes de enviarla a la capa Datos.
+    /// Reglas de negocio de Usuarios: valida los datos y mantiene el formato SHA-256 existente.
     /// Los métodos que modifican datos devuelven "OK" (constante Correcto) o el mensaje para el usuario.
     /// </summary>
     public class NUsuario
@@ -40,7 +40,7 @@ namespace Negocio
             return datos.Buscar(texto);
         }
 
-        /// <summary>Valida y guarda un usuario nuevo. La clave es obligatoria y se guarda cifrada.</summary>
+        /// <summary>Valida y guarda un usuario usando el mismo SHA-256 que ya utilizaba el CRUD.</summary>
         public string Insertar(Usuario usuario, string clave)
         {
             string error = Validar(usuario);
@@ -75,8 +75,8 @@ namespace Negocio
                 return error;
             }
 
-            // null le indica a la capa Datos que NO cambie la clave.
-            string claveCifrada = null;
+            // null le indica a la capa Datos que conserve la clave guardada.
+            string claveNueva = null;
             clave = clave ?? "";
             if (clave != "")
             {
@@ -84,10 +84,10 @@ namespace Negocio
                 {
                     return "La clave debe tener al menos " + LargoMinimoClave + " caracteres.";
                 }
-                claveCifrada = CifrarClave(clave);
+                claveNueva = CifrarClave(clave);
             }
 
-            if (!datos.Actualizar(usuario, claveCifrada))
+            if (!datos.Actualizar(usuario, claveNueva))
             {
                 return "El usuario ya no existe en la base de datos.";
             }
@@ -109,23 +109,14 @@ namespace Negocio
             return Correcto;
         }
 
-        /// <summary>
-        /// Cifra la clave con SHA-256 y la devuelve en hexadecimal (64 caracteres).
-        /// Es de una sola vía: no se puede "descifrar". Para iniciar sesión se cifra lo que escribe
-        /// el usuario y se compara con lo guardado (documento 07).
-        /// </summary>
+        /// <summary>Convierte la clave al formato SHA-256 existente, que no es cifrado reversible.</summary>
         public static string CifrarClave(string clave)
         {
             using (SHA256 sha = SHA256.Create())
             {
                 byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(clave));
-
-                // Cada byte se escribe como 2 dígitos hexadecimales (por ejemplo, 255 -> "ff").
                 StringBuilder resultado = new StringBuilder();
-                foreach (byte b in bytes)
-                {
-                    resultado.Append(b.ToString("x2"));
-                }
+                foreach (byte valor in bytes) resultado.Append(valor.ToString("x2"));
                 return resultado.ToString();
             }
         }
@@ -140,6 +131,10 @@ namespace Negocio
             if (usuario.IdSucursal <= 0)
             {
                 return "Escriba el ID de la sucursal (un número mayor que 0).";
+            }
+            if (!usuario.IdRol.HasValue || usuario.IdRol.Value <= 0)
+            {
+                return "Seleccione un rol para el usuario.";
             }
             if (usuario.NombreUsuario == "")
             {

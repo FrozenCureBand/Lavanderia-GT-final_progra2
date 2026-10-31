@@ -104,3 +104,46 @@ Se registraron estos resultados y las pruebas manuales pendientes en MEMORY.md y
 ### Resultado
 
 Revisión estática y compilación alternativa correctas; validación en ejecución pendiente.
+
+## Prompt 06 — 2026-10-30 19:30 — Doc. 06, Login y roles (skill 07)
+
+### Texto completo
+
+Autorizo el desarrollo de la lógica de Entidad, Datos y Negocio del Login y Roles.
+ Usa las tablas y columnas reales, SQL parametrizado y try-catch.
+Aplica los acuerdos definidos para lógica, diseño, arquitectura y nivel de progra acordados previamente.
+Valida usuario y contraseña según el nivel académico actual.
+ No agregues cifrado ni cambies la forma de guardar contraseñas.
+ No incluyas la contraseña de SQL Server en archivos de GitHub.
+ Explica los métodos creados con comentarios sencillos.
+El usuario y rol conectado debe aparecer en el panel superior de cada crud y también en el Panel.
+Implementación de tres roles diferentes.
+Cada rol debería de ver y tener diferentes accesos, los accesos deben ser configurables en las tablas, es decir desde el crud.
+Al terminar, detente y enumera los archivos modificados.
+
+### Resumen de la respuesta
+
+Se añadieron las tablas autorizadas para roles y accesos, se sembraron tres roles con permisos iniciales y se asignó el rol Administrador al primer usuario existente para habilitar la configuración. Se implementaron las consultas y reglas por capas, Login contra SQL Server, asignación de rol en Usuarios y un CRUD de Roles con configuración de accesos. El menú filtra opciones por permisos, abre la primera opción autorizada si Inicio está deshabilitado y muestra la sesión en el panel y formularios CRUD. Login acepta el formato actual de la base y SHA-256, que el CRUD aplica al guardar cambios; no se migraron contraseñas. MSBuild reconstruyó la solución con 0 advertencias y 0 errores. No se ejecutó prueba manual de interfaz.
+
+### Resultado
+
+Implementación y compilación correctas; prueba manual pendiente.
+
+## Prompt 07 — 2026-10-30 19:33 — Guía 06 del equipo, revisión de Login
+
+### Texto completo
+
+Revisa el Login implementado sin modificar otras pantallas.
+Actualiza MEMORY.md, ESTADO_DOCUMENTOS.md y
+docs/COMANDOS_RAPIDOS.md solo con pruebas confirmadas.
+Marca Guía 06 completada para integrante 1; deja Guías 07 y 08
+pendientes para sus responsables. Resume qué funciona, qué falta
+y qué pruebas debe repetir el equipo al integrar.
+
+### Resumen de la respuesta
+
+Se hizo inspección estática del Login, reconstrucción Debug y consulta SQL de solo lectura con credenciales ficticias. La compilación terminó con 0 advertencias y 0 errores; la consulta no autenticó una cuenta real. Se actualizaron MEMORY.md, ESTADO_DOCUMENTOS.md y docs/COMANDOS_RAPIDOS.md con los hechos confirmados y la numeración del equipo frente a las rutas locales. La prueba manual de Login e integración queda pendiente.
+
+### Resultado
+
+Revisión estática y compilación correctas; autenticación real e integración pendientes.

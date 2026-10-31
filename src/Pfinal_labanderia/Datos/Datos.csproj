@@ -53,8 +53,10 @@
     <Compile Include="DCliente.cs" />
     <Compile Include="DEntrega.cs" />
     <Compile Include="DInicio.cs" />
+    <Compile Include="DLogin.cs" />
     <Compile Include="DProceso.cs" />
     <Compile Include="DRecepcion.cs" />
+    <Compile Include="DRol.cs" />
     <Compile Include="DServicio.cs" />
     <Compile Include="DTarifa.cs" />
     <Compile Include="DTipoPrenda.cs" />
