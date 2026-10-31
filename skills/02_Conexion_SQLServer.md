@@ -1,6 +1,6 @@
 # Skill 02 — Conexión a SQL Server
 
-> **Estado: COMPLETO (guía)** · Documento 02: ejecutado por instrucción del estudiante (2026-10-17).
+> **Estado: COMPLETADO** · Documento 02: la aplicación Release mostró conexión exitosa en el equipo destino, según confirmación del estudiante (2026-10-30).
 > Alcance: solo la clase de conexión y su prueba inicial; **sin CRUD**.
 
 ## Objetivo
@@ -28,7 +28,7 @@ En `src\Pfinal_labanderia\Pfinal_labanderia\App.config` existe:
 | Base de datos | `Db_ParqueoAutosUmg` ← parece de otro proyecto; revisar |
 | Autenticación | Usuario SQL `sa` (contraseña en texto plano) |
 
-La conexión **no se ha probado**. El estado actualizado está en
+La prueba de `ProbarConexion` con las DLL compiladas se ejecutó en 2026-10-17. La aplicación Release también se probó en el equipo destino y el estudiante confirmó el mensaje de conexión exitosa. El estado actualizado está en
 [database/CONEXION_DATABASE.md](../database/CONEXION_DATABASE.md).
 
 ## Pasos
@@ -154,10 +154,11 @@ y se repitió la prueba con el resultado de la tabla.
 - [x] `Datos\Conexion.cs` y `Negocio\NConexion.cs` existen y están registrados en sus `.csproj`.
 - [x] La solución compila sin errores.
 - [x] La prueba muestra "Conexión exitosa" (con las DLL compiladas).
-- [ ] La prueba muestra "Conexión exitosa" al pulsar F5 en Visual Studio (la hace el estudiante).
+- [x] La aplicación Release muestra "Conexión exitosa" en el equipo destino (confirmación del estudiante, 2026-10-30).
+- [ ] La prueba exacta al pulsar F5 en Visual Studio no se realizó.
 - [ ] Decidir si se retira la prueba de `Program.cs` o se deja solo el aviso de error.
 - [ ] `CONEXION_DATABASE.md` y `MEMORY.md` actualizados con lo comprobado.
 
 ## Criterio de cierre
 
-Conexión comprobada desde la aplicación, documentada y confirmada por el estudiante.
+Conexión comprobada desde la aplicación publicada en el equipo destino, documentada y confirmada por el estudiante. La prueba F5 en Visual Studio queda como una modalidad no ejecutada.

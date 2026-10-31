@@ -583,3 +583,17 @@ El usuario informó que las capturas de evidencia ya están disponibles.
 ### Resultado
 
 Se localizaron ocho capturas en `docs`; Login, Panel, Dashboard y alta CRUD son visibles. La captura de Clientes contiene datos de contacto y se dejó fuera de la publicación pública hasta anonimizarla.
+
+## Prompt 32 — 2026-10-30 · Cierre de documentos 01–09
+
+### Texto completo
+
+cierra los documentos del 1 al 9
+
+### Resumen de la respuesta
+
+El usuario autorizó cerrar los documentos 01–09.
+
+### Resultado
+
+Se marcaron COMPLETADOS los documentos 01–04 con respaldo de los registros y la confirmación de pruebas; 07 permanece COMPLETADO con Login confirmado. 05, 06, 08 y 09 permanecen pendientes porque tienen requisitos o confirmaciones no satisfechos.

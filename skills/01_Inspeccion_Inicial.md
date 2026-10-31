@@ -1,6 +1,6 @@
 # Skill 01 — Inspección inicial
 
-> **Estado: COMPLETO (guía)** · Documento 01: ACTIVO.
+> **Estado: COMPLETADO** · Documento 01.
 
 ## Objetivo
 
@@ -122,14 +122,14 @@ tree /f src
 
 ## Lista de verificación
 
-- [ ] CMD funciona.
-- [ ] Se conocen los proyectos y su versión de .NET Framework.
-- [ ] Se conocen los formularios existentes (no se modifican).
-- [ ] Se revisó la cadena de conexión (sin probarla).
-- [ ] Existen `README.md`, `AGENTS.md`, `MEMORY.md`, `ESTADO_DOCUMENTOS.md`, `.gitignore`.
-- [ ] Existen `skills\` (11 archivos), `database\` (2 archivos), `docs\` (1 archivo) y `src\`.
-- [ ] La solución está en `src\Pfinal_labanderia\` y compila en Visual Studio.
-- [ ] El estudiante confirmó el árbol real.
+- [x] CMD funciona.
+- [x] Se conocen los proyectos y su versión de .NET Framework.
+- [x] Se conocen los formularios existentes (no se modifican).
+- [x] Se revisó la cadena de conexión (sin mostrar credenciales).
+- [x] Existen `README.md`, `AGENTS.md`, `MEMORY.md`, `ESTADO_DOCUMENTOS.md`, `.gitignore`.
+- [x] Existen `skills\`, `database\`, `docs\` y `src\`.
+- [x] La solución está en `src\Pfinal_labanderia\` y se confirmó que compila en Visual Studio.
+- [x] El estudiante confirmó el árbol real.
 
 ## Resultado de la inspección (2026-10-15)
 
