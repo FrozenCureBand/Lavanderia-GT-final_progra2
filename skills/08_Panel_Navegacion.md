@@ -1,7 +1,6 @@
 # Skill 08 — Panel de navegación
 
-> **Estado:** implementación inspeccionada y compilada. Pruebas manuales y cierre pendientes de confirmación del
-> estudiante. El estudiante ha referido este trabajo como Documento 07; en la matriz del proyecto corresponde al 08.
+> **Estado: COMPLETADO** por confirmación y autorización definitiva del estudiante (2026-10-30). El estudiante ha referido este trabajo como Documento 07; en la matriz del proyecto corresponde al 08.
 
 ## Controles, eventos y destinos confirmados
 
@@ -53,6 +52,4 @@ abre el resumen existente y no ofrece mantenimiento de sucursales.
   (2026-10-24).
 - `Entregas`, `Procesos`, `Tipos de prenda` y `Servicios`: el registro de integración de esos módulos informa
   pruebas que incluyeron menú (2026-10-24); no se volvió a ejecutar esa prueba en esta revisión.
-- Pendientes de prueba manual actual: todas las opciones en la aplicación, en particular Recepciones, Tarifas y las
-  tres rutas añadidas para Detalle recepciones, Estados de proceso y Sucursales; también probar cambio entre
-  formularios y reabrir la opción activa.
+- El estudiante confirmó y autorizó el cierre definitivo. Las pruebas individuales de las rutas listadas no se repitieron en esta actualización.

@@ -1,6 +1,7 @@
 # Skill 05 — Maestro-detalle
 
-> **Estado: PENDIENTE** · Documento 05: **BLOQUEADO** hasta autorización del estudiante.
+> **Estado: COMPLETADO** · Cierre definitivo autorizado y confirmado por el estudiante (2026-10-30).
 
-Contenido por completar cuando se active el documento 05.
+El estudiante confirmó el cierre de este documento. Esta actualización registra su confirmación y autorización; no se ejecutaron pruebas nuevas ni se agregaron evidencias independientes en este paso.
+
 Reglas aplicables: [AGENTS.md](../AGENTS.md).

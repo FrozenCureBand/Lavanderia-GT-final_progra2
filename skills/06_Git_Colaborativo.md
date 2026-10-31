@@ -1,6 +1,6 @@
 # Skill 06 — Git y GitHub colaborativo
 
-> Documento 06: **BLOQUEADO** (trabajado por pedido del estudiante el 2026-10-24; falta el cierre).
+> Documento 06: **COMPLETADO** por confirmación y autorización definitiva del estudiante (2026-10-30).
 > Repositorio: https://github.com/cpradoc2/Lavanderia-GT-final_progra2 (público, rama `main`).
 
 Se trabaja **después de los CRUD (03–05) y antes de Login (07)**.
@@ -47,8 +47,7 @@ Los pasos están en el [README](../README.md), sección "Cómo clonar y abrir el
 2. Copiar `Conexion.config.ejemplo` como `Conexion.config` y escribir su contraseña.
 3. Abrir la solución `.slnx` y compilar.
 
-Para que el compañero pueda hacer `git push`, el dueño lo agrega en
-GitHub → Settings → Collaborators → Add people. **PENDIENTE.**
+El estudiante confirma el cierre definitivo del documento. El acceso individual del compañero no se verificó de forma independiente en esta actualización.
 
 ## 4. Rutina diaria
 
