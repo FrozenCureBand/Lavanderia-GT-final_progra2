@@ -64,8 +64,10 @@ namespace Pfinal_labanderia
             try
             {
                 // ---- Tarjetas de indicadores ----
+                // El primer indicador se consulta de forma independiente por la capa Negocio.
+                lblValorClientes.Text = negocioInicio.ObtenerClientesActivos().ToString("N0");
+
                 ResumenInicio resumen = negocioInicio.ObtenerResumen();
-                lblValorClientes.Text = resumen.ClientesActivos.ToString("N0");
                 lblValorSucursales.Text = resumen.SucursalesActivas.ToString("N0");
                 lblValorRecepciones.Text = resumen.RecepcionesMes.ToString("N0");
                 lblValorIngresos.Text = "Q " + resumen.IngresosMes.ToString("N2");

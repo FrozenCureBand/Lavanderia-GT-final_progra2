@@ -398,3 +398,21 @@ código solo las líneas de estilo de la paginación.
   bloqueadas por otro proceso; la salida alternativa permitió completar la compilación.
 - No se ejecutó la aplicación ni se probaron los 12 clics en ejecución. Quedan pendientes las pruebas manuales
   de navegación y la confirmación del estudiante para cerrar este punto.
+
+## 2026-10-30 · Documento 09 — Primer indicador: clientes activos
+
+- Se añadió a `Datos.DInicio` una consulta ADO.NET `COUNT(*)` sobre `dbo.Tbl_Clientes`, filtrada por `Estado = 1`,
+  con `try-catch` para errores SQL.
+- `Negocio.NInicio.ObtenerClientesActivos()` solicita ese valor a Datos.
+- `Presentación.inicio` asigna el valor a la etiqueta existente `lblValorClientes`.
+- `ObtenerResumen` conserva los otros cuatro indicadores; se retiró de su consulta el conteo de clientes para no
+  consultar el mismo dato dos veces. No se modificó Entidad ni ningún `Designer.cs`.
+- Compilación y prueba manual: pendientes; no se ejecutaron en esta tarea.
+
+## 2026-10-30 · Documento 09 — Revisión del Dashboard
+
+- Inspección estática: `DInicio.ObtenerClientesActivos()` cuenta filas de `dbo.Tbl_Clientes` con `Estado = 1`; usa ADO.NET, `ExecuteScalar` y captura `SqlException`. `NInicio` delega la consulta y `inicio.CargarDatos()` asigna el resultado a `lblValorClientes`.
+- Se confirmó en el Designer existente el control `lblValorClientes` y los cuatro Charts nombrados en `ESTADO_DOCUMENTOS.md`; no se modificaron archivos `.Designer.cs`.
+- `DInicio` contiene además consultas estáticas para el resto de los indicadores. No fueron ejecutadas contra SQL Server ni verificadas en la interfaz.
+- Reconstrucción de `Pfinal_labanderia.slnx` con MSBuild 17.14.40 y salida alternativa `obj\\DashboardBuild`: correcta, 0 advertencias y 0 errores. La reconstrucción con salida `bin\\Debug` no pudo copiar DLL bloqueadas y terminó con 6 errores; la salida alternativa completó la compilación.
+- Prueba de ejecución/F5 y comparación de valores con SQL Server: pendientes.

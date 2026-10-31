@@ -14,6 +14,29 @@ namespace Datos
     public class DInicio
     {
         /// <summary>
+        /// Cuenta los clientes que tienen Estado activo (1).
+        /// COUNT devuelve un único número, que se lee con ExecuteScalar.
+        /// </summary>
+        public int ObtenerClientesActivos()
+        {
+            string sql = "SELECT COUNT(*) FROM dbo.Tbl_Clientes WHERE Estado = 1;";
+
+            try
+            {
+                using (SqlConnection cn = Conexion.ObtenerConexion())
+                using (SqlCommand cmd = new SqlCommand(sql, cn))
+                {
+                    cn.Open();
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("No se pudieron consultar los clientes activos. " + ex.Message, ex);
+            }
+        }
+
+        /// <summary>
         /// Indicadores de las tarjetas. El periodo va desde 'inicio' (incluido) hasta 'fin' (excluido).
         /// </summary>
         public ResumenInicio ObtenerResumen(DateTime inicio, DateTime fin)
@@ -21,7 +44,6 @@ namespace Datos
             // Cada subconsulta devuelve un solo número: así se obtienen los 5 indicadores en una consulta.
             string sql =
                 "SELECT " +
-                " (SELECT COUNT(*) FROM dbo.Tbl_Clientes WHERE Estado = 1) AS ClientesActivos, " +
                 " (SELECT COUNT(*) FROM dbo.Tbl_Sucursales WHERE Estado = 1) AS SucursalesActivas, " +
                 " (SELECT COUNT(*) FROM dbo.Tbl_Recepciones " +
                 "    WHERE FechaRecepcion >= @Inicio AND FechaRecepcion < @Fin) AS RecepcionesMes, " +
@@ -44,7 +66,6 @@ namespace Datos
                     {
                         if (dr.Read())
                         {
-                            resumen.ClientesActivos = Convert.ToInt32(dr["ClientesActivos"]);
                             resumen.SucursalesActivas = Convert.ToInt32(dr["SucursalesActivas"]);
                             resumen.RecepcionesMes = Convert.ToInt32(dr["RecepcionesMes"]);
                             resumen.IngresosMes = Convert.ToDecimal(dr["IngresosMes"]);

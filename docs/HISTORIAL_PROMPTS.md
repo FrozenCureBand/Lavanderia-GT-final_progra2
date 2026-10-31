@@ -63,3 +63,44 @@ Dashboard ni diseños; no se hizo commit ni push.
 ### Resultado
 
 Compilación correcta. Pruebas manuales de navegación y confirmación de cierre pendientes del estudiante.
+
+## Prompt 04 — 2026-10-30 18:54 — Doc. 09, primer indicador
+
+### Texto completo
+
+Autorizo SOLO el primer indicador aprobado.
+Integra la consulta en Datos, el método en Negocio y
+la asignación al control existente en Presentación.
+Conserva las cuatro capas y el diseño Windows Forms.
+Muestra los archivos modificados y cómo probar el resultado.
+Detente al terminar; espera mi confirmación.
+
+### Resumen de la respuesta
+
+Se separó la consulta COUNT de clientes activos en Datos, se expuso mediante un método de Negocio y se asignó su
+resultado a `lblValorClientes` en Presentación. Se conservaron los demás indicadores, la entidad y el diseñador.
+No se ejecutaron compilación ni pruebas.
+
+### Resultado
+
+Implementación realizada; compilación y prueba manual pendientes.
+
+## Prompt 05 — 2026-10-30 18:57 — Doc. 09, revisión y compilación
+
+### Texto completo
+
+Revisa SOLO el Dashboard y los indicadores implementados.
+Comprueba consultas SQL, capas, controles reales y compilación.
+No cambies CRUD, Login, Panel ni archivos Designer.cs.
+Actualiza MEMORY.md y ESTADO_DOCUMENTOS.md solo con pruebas confirmadas.
+Indica qué funciona, qué falta y espera mi confirmación final.
+
+### Resumen de la respuesta
+
+Se hizo inspección estática de consultas, flujo por capas y nombres reales de controles; la reconstrucción en bin\\Debug
+tropezó con DLL bloqueadas, y la reconstrucción en obj\\DashboardBuild completó con 0 advertencias y 0 errores.
+Se registraron estos resultados y las pruebas manuales pendientes en MEMORY.md y ESTADO_DOCUMENTOS.md.
+
+### Resultado
+
+Revisión estática y compilación alternativa correctas; validación en ejecución pendiente.

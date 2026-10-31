@@ -15,6 +15,12 @@ namespace Negocio
         // Objeto de la capa Datos (encapsulado: solo se usa dentro de esta clase).
         private readonly DInicio datos = new DInicio();
 
+        /// <summary>Solicita a Datos la cantidad de clientes activos.</summary>
+        public int ObtenerClientesActivos()
+        {
+            return datos.ObtenerClientesActivos();
+        }
+
         /// <summary>Primer día del mes actual a las 00:00 (por ejemplo, 01/10/2026).</summary>
         private static DateTime InicioMesActual()
         {
