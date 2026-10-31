@@ -669,3 +669,17 @@ Se verificó el archivo de respaldo señalado dentro de la carpeta `database` de
 ### Resultado
 
 `database\BD_LavanderiaGT.bak` existe localmente y Git lo ignora. No forma parte de GitHub; no se verificó su restauración.
+
+## Prompt 38 — 2026-10-30 · Documento 11, preparar puntos 2 y 3
+
+### Texto completo
+
+el punto 2 y 3 como lo logramos tener listo?
+
+### Resumen de la respuesta
+
+Se propuso separar el export de esquema, los datos sintéticos de prueba y el respaldo `.bak`, y validar en una base de pruebas.
+
+### Resultado
+
+Plan explicado; no se generó ni ejecutó ningún script.
