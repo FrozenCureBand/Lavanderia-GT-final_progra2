@@ -639,3 +639,19 @@ Se agregó el enlace del fork de FrozenCureBand al README y se actualizó el com
 ### Resultado
 
 README apunta al repositorio del estudiante; no se cambiaron los remotos de Git.
+
+## Prompt 36 — 2026-10-30 · Documento 11, revisión de entregables
+
+### Texto completo
+
+todo esto ya esta? 1. Programa completo y unificado
+2. ⁠script exportación de la base de datos integrada
+3. ⁠script exportación de datos de pruebas para todas las tablas4.  Archivo .exe que se usará para instalar el sistema
+
+### Resumen de la respuesta
+
+Se revisó la solución, los scripts SQL, el respaldo y los archivos de Release para separar lo que está entregado de lo que falta.
+
+### Resultado
+
+La solución y el ejecutable portable existen; falta un script de exportación completa de la base y un script de datos de prueba para todas las tablas. El respaldo real existe fuera del repositorio, pero no se probó restaurarlo. El `.exe` no es un instalador.

@@ -519,3 +519,5 @@ código solo las líneas de estilo de la paginación.
 2026-10-30 21:35, Doc. 11, consulta del ejecutable: CMD confirmó que `C:\Entrega_LavanderiaGT\Release\Pfinal_labanderia.exe` existe. Es el ejecutable de la carpeta de entrega externa al repositorio.
 
 2026-10-30, Doc. 11, README: se agregó el enlace al repositorio de entrega `FrozenCureBand/Lavanderia-GT-final_progra2` y se cambió la instrucción `git clone` para usar ese fork. Se conserva el remoto upstream sin cambios.
+
+2026-10-30 21:59, revisión de entregables solicitados: se leyó `database/scripts/LavanderiasGT.sql` y se confirmó que crea el esquema de las 11 tablas base sin INSERT de datos. `database/02_Login_Roles.sql` agrega tablas y registros iniciales de roles/accesos, no datos de prueba para todas las tablas. `database/01_Backup_Base_Datos.sql` continúa como plantilla con valores pendientes. CMD encontró el `.bak` local en `C:\Respaldos` y el ejecutable con sus seis archivos auxiliares en `C:\Entrega_LavanderiaGT\Release`. No se verificó restauración del `.bak`.
