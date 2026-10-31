@@ -15,7 +15,7 @@ después de recibir la autorización y de comprobar el resultado.
 | 05 | Maestro-detalle | [05_Maestro_Detalle.md](skills/05_Maestro_Detalle.md) | BLOQUEADO | Skill PENDIENTE |
 | 06 | Git colaborativo | [06_Git_Colaborativo.md](skills/06_Git_Colaborativo.md) | BLOQUEADO | Trabajado por pedido del estudiante (2026-10-24): contraseña fuera del repositorio y repositorio público `cpradoc2/Lavanderia-GT-final_progra2` subido; clon compilado. Falta agregar al compañero como colaborador y el cierre |
 | 07 | Login y roles | [07_Login_Roles.md](skills/07_Login_Roles.md) | BLOQUEADO | Al final de la parte funcional |
-| 08 | Panel de navegación | [08_Panel_Navegacion.md](skills/08_Panel_Navegacion.md) | BLOQUEADO | Skill PENDIENTE |
+| 08 | Panel de navegación | [08_Panel_Navegacion.md](skills/08_Panel_Navegacion.md) | BLOQUEADO | Revisión estática de los 12 eventos y referencias; compilación correcta con salida alternativa (2026-10-30). Pruebas manuales pendientes y cierre sujeto a confirmación. En esta matriz el Panel es Doc. 08; el estudiante lo ha llamado Doc. 07. |
 | 09 | Dashboard | [09_Dashboard.md](skills/09_Dashboard.md) | BLOQUEADO | Skill PENDIENTE |
 | 10 | Revisión del proyecto | [10_Revision_Proyecto.md](skills/10_Revision_Proyecto.md) | BLOQUEADO | Skill PENDIENTE |
 | 11 | Publicación | [11_Publicacion.md](skills/11_Publicacion.md) | PENDIENTE | Skill PENDIENTE |
@@ -52,3 +52,4 @@ después de recibir la autorización y de comprobar el resultado.
 | 2026-10-24 | 03–05 | Integración del proyecto del compañero: Entregas, Procesos, TiposPrenda y Servicios rehechos con la estructura del proyecto y conectados al menú. Compila; pruebas correctas y base intacta. |
 | 2026-10-24 | — | Pedido del estudiante: rediseño visual de los 11 formularios (Segoe UI, menú azul marino, iconos nuevos) sin cambiar la lógica. Compila; eventos y nombres de controles iguales al respaldo; pruebas de solo lectura correctas; capturas revisadas. El estudiante lo aprobó. |
 | 2026-10-24 | 06 | Pedido del estudiante: repositorio público en GitHub. Contraseña movida a `Conexion.config` (ignorado); `git grep` sin coincidencias; repositorio creado y subido; clon de prueba compila. |
+| 2026-10-30 | 08 (Panel; solicitado como Doc. 07) | Revisión de nombres, eventos, destinos y referencias; MSBuild correcto (0 advertencias/errores con salida `obj\PanelBuild`). Navegación manual y cierre pendientes. |

@@ -29,6 +29,8 @@ namespace Pfinal_labanderia
             iconButton5.Click += btnProcesos_Click;      // "Procesos"
             iconButton9.Click += btnTiposPrenda_Click;   // "TiposPrenda"
             iconButton12.Click += btnServicios_Click;    // "Servicios"
+            iconButton2.Click += btnDetalleRecepciones_Click; // "Detalle recepciones"
+            iconButton11.Click += btnSucursales_Click;        // "Sucursales"
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
@@ -44,6 +46,15 @@ namespace Pfinal_labanderia
         {
             try
             {
+                // Si ya está abierto este formulario, conserva la instancia actual.
+                // Se libera la instancia recién creada y se evita mostrar una copia.
+                if (formularioActivo != null && formularioActivo.GetType() == formularioHijo.GetType())
+                {
+                    formularioHijo.Dispose();
+                    formularioActivo.BringToFront();
+                    return;
+                }
+
                 // 1. El formulario que se mostraba antes desaparece del panel.
                 CerrarFormularioActivo();
                 formularioActivo = formularioHijo;
@@ -88,9 +99,7 @@ namespace Pfinal_labanderia
 
         // ---------------------------------------------------------------
         // Botones del menú lateral.
-        // Cada evento Click está conectado en precentacion.Designer.cs
-        // (igual que al hacer doble clic en el botón dentro del diseñador)
-        // y solo indica QUÉ formulario se abre en panelPrincipal.
+        // Cada evento Click indica qué formulario existente se abre en panelPrincipal.
         // ---------------------------------------------------------------
 
         /// <summary>Botón "Inicio" (bnt_inicio): vuelve a mostrar la pantalla de Inicio con datos actualizados.</summary>
@@ -147,9 +156,21 @@ namespace Pfinal_labanderia
             AbrirFormularioEnPanel(new Servicios());
         }
 
+        /// <summary>Abre el listado existente de Recepciones para consultar sus registros.</summary>
+        private void btnDetalleRecepciones_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new Recepciones());
+        }
+
         private void iconButton4_Click(object sender, EventArgs e)
         {
+            AbrirFormularioEnPanel(new Procesos());
+        }
 
+        /// <summary>Abre Inicio, donde se muestran indicadores y una gráfica por sucursal.</summary>
+        private void btnSucursales_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioEnPanel(new inicio());
         }
 
         private void panelBotones_Paint(object sender, PaintEventArgs e)

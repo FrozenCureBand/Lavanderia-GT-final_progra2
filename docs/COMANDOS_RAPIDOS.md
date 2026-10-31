@@ -77,6 +77,24 @@ tree /f database
 tree /f docs
 ```
 
+## Documento 08 — Panel de navegación
+
+Desde CMD, compilar la solución en Debug. La salida alternativa evita intentar reemplazar DLL que Visual Studio o
+una instancia abierta del programa mantenga bloqueadas:
+
+```bat
+cd /d C:\2026_ProgramacionII\ProyectoFinal_LavanderiasMultinegocio\src\Lavanderia-GT-final_progra2\src\Pfinal_labanderia
+"C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe" Pfinal_labanderia.slnx /t:Build /p:Configuration=Debug /p:OutputPath=obj\PanelBuild\ /p:IntermediateOutputPath=obj\PanelBuild\ /m
+```
+
+Para revisar el cableado de Click y los destinos del Panel desde la carpeta `src\Pfinal_labanderia`:
+
+```bat
+findstr /n /i /c:"Click" /c:"AbrirFormularioEnPanel" Pfinal_labanderia\precentacion.cs Pfinal_labanderia\precentacion.Designer.cs
+```
+
+La navegación visual se prueba ejecutando el proyecto en Visual Studio (F5) y pulsando cada opción del menú.
+
 ## SQL Server (documento 02, BLOQUEADO)
 
 ```bat

@@ -356,3 +356,45 @@ código solo las líneas de estilo de la paginación.
 - Convertir a SHA-256 las 5 claves actuales en texto plano (documento 07, Login) — PENDIENTE.
 - ~~Retirar la contraseña de `App.config` antes de Git~~ — RESUELTO el 2026-10-24 (`Conexion.config`).
 - Cerrar el documento 01 y decidir el estado del 06 — PENDIENTE de autorización del estudiante.
+
+## 2026-10-30 · Documento 07 — Panel de navegación
+
+- Por autorización del estudiante, se inspeccionó y conservó la navegación existente en `precentacion.cs`:
+  Inicio, Clientes, Recepciones, Tarifas, Usuarios, Entregas, Procesos, Tipos de prenda y Servicios ya tenían
+  sus eventos `Click` conectados a formularios existentes.
+- Se modificó `AbrirFormularioEnPanel(Form)` para que, si el formulario activo es del mismo tipo que la opción
+  pulsada, se libere la instancia recién creada y se conserve la que ya está mostrada. La navegación sigue usando
+  el `panelPrincipal` existente y `Show()`.
+- Detalle de recepciones, Sucursales y Estados de proceso siguen sin destino: no se encontró un formulario de
+  Presentación correspondiente y no se crearon pantallas.
+- No se modificaron `precentacion.Designer.cs` ni otros archivos de interfaz. **Compilación y prueba manual:
+  pendientes para el estudiante.**
+
+## 2026-10-30 · Documento 07 — Destinos para las opciones restantes
+
+- Por solicitud del estudiante, se conectaron en `precentacion.cs` los botones que antes no tenían destino:
+  `iconButton2` abre el formulario existente `Recepciones`; `iconButton4` abre `Procesos`; `iconButton11` abre
+  `inicio`, que ya presenta indicadores y una gráfica por sucursal.
+- Se agregó el método `btnDetalleRecepciones_Click` y el método `btnSucursales_Click`; `iconButton4_Click`, ya
+  conectado en el diseñador, ahora abre `Procesos`.
+- No se crearon formularios ni se modificó el diseñador. El destino Sucursales es el resumen existente, no un
+  formulario de mantenimiento de sucursales. **Compilación y pruebas manuales: pendientes.**
+
+## 2026-10-30 · Panel de navegación — revisión y compilación
+
+- Inspección estática de `precentacion.Designer.cs` y `precentacion.cs`: los 12 botones tienen texto y evento
+  `Click`; sus destinos son `inicio`, `clientes`, `Recepciones`, `Tarifas`, `usuarios`, `Entregas`, `Procesos`,
+  `TiposPrenda` y `Servicios`. Detalle de recepciones reutiliza `Recepciones`, Estados de proceso reutiliza
+  `Procesos` y Sucursales abre `inicio` (resumen/gráfica por sucursal).
+- El proyecto Presentación referencia Datos, Entidad y Negocio. En `precentacion.cs` no se encontraron accesos
+  directos a SQL Server.
+- Pruebas de navegación ya registradas antes de esta revisión: el estudiante confirmó Usuarios; una prueba
+  automática recorrió Inicio → Clientes → Inicio; el registro de integración de Entregas, Procesos, TiposPrenda y
+  Servicios incluye el menú. No se volvió a ejecutar ninguna prueba de interfaz en esta revisión.
+- Pendientes de prueba manual de los botones: Recepciones, Tarifas, Detalle recepciones, Estados de proceso y
+  Sucursales. También queda comprobar en la aplicación el cambio entre opciones y volver a pulsar la opción activa.
+- Compilación de `Pfinal_labanderia.slnx` con MSBuild 17.14.40 y salida alternativa `obj\PanelBuild`: correcta,
+  0 advertencias y 0 errores. La compilación con salida normal no pudo completar la copia de DLL porque estaban
+  bloqueadas por otro proceso; la salida alternativa permitió completar la compilación.
+- No se ejecutó la aplicación ni se probaron los 12 clics en ejecución. Quedan pendientes las pruebas manuales
+  de navegación y la confirmación del estudiante para cerrar este punto.
