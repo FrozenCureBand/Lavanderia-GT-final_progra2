@@ -569,3 +569,17 @@ El usuario pidió que continúe autónomamente con los pasos restantes.
 ### Resultado
 
 Autorización general para continuar con el trabajo restante; no se crearán evidencias ficticias ni se afirmarán validaciones no realizadas.
+
+## Prompt 31 — 2026-10-30 · Documento 10, paso 10.6
+
+### Texto completo
+
+Ya estan las evidencias
+
+### Resumen de la respuesta
+
+El usuario informó que las capturas de evidencia ya están disponibles.
+
+### Resultado
+
+Se localizaron ocho capturas en `docs`; Login, Panel, Dashboard y alta CRUD son visibles. La captura de Clientes contiene datos de contacto y se dejó fuera de la publicación pública hasta anonimizarla.

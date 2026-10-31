@@ -509,3 +509,5 @@ código solo las líneas de estilo de la paginación.
 2026-10-30, Doc. 10, paso 10.6: Se añadió al README información de ejecución, archivos Release, conexión sin contraseña, respaldo, pruebas reportadas y responsabilidades nominales pendientes. docs contiene COMANDOS_RAPIDOS.md e HISTORIAL_PROMPTS.md; no se encontraron capturas de evidencia.
 
 2026-10-30, Doc. 10, pasos 10.7–10.8: Git revisado en la rama main; origin apunta al fork FrozenCureBand y upstream a cpradoc2. Los cambios documentales se guardaron en el commit c9effc2 y se enviaron solo a origin; el estado local quedó limpio. ESTADO_DOCUMENTOS.md indica el documento 11 como ACTIVO, no COMPLETADO, porque las evidencias visuales faltan y los documentos 01–09 no están todos cerrados. No se probó restaurar el .bak.
+
+2026-10-30, Doc. 10, paso 10.6: CMD encontró ocho capturas en docs. La revisión visual muestra Login, Panel, Dashboard y alta CRUD de Tipos de prenda. Evidencia_Clientes.png muestra nombres y datos de contacto, por lo que se excluye de publicación hasta anonimizarla. Las capturas no demuestran edición ni eliminación; esas pruebas fueron reportadas por el usuario.

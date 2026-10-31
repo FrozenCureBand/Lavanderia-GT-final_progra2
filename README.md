@@ -128,6 +128,8 @@ El usuario confirmo que el ejecutable se conecto a SQL Server desde el equipo de
 
 Respaldo informado y localizado en el equipo: C:\Respaldos\BD_LavanderiaGT.bak. La presencia del archivo se comprobo por listado; no se ejecuto el script SQL ni una restauracion de prueba.
 
-Evidencias visuales de Login, Panel, Dashboard y CRUD: pendientes de guardar en docs, carpeta plana.
+Evidencias visuales disponibles en docs, carpeta plana: `Evidencia_Login.png`, `Evidencia_Panel.png`, `Evidencia_Dashboard.png`, `Evidencia_CRUD_OtroModulo.png` y `Evidencia_CRUD_OtroModuloAgregar1.png` a `Evidencia_CRUD_OtroModuloAgregar3.png`. Las capturas CRUD muestran el módulo Tipos de prenda y el alta de un registro; edición y eliminación fueron reportadas por el usuario, sin capturas específicas.
+
+`Evidencia_Clientes.png` permanece local y no se incluye en GitHub porque muestra nombres, teléfonos, correos y direcciones. Debe anonimizarse antes de compartirla públicamente.
 
 Responsables: asignacion nominal pendiente de confirmacion por el equipo.
